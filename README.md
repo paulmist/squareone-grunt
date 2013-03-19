@@ -1,4 +1,4 @@
-cyclingdead
+squareone
 ===========
 
-Tumblr theme
+HTML base template
