@@ -65,10 +65,11 @@ module.exports = function(grunt) {
 
 		connect: {
 			dev: {
-				options: {
+				options:{
 					port: 8000,
-					base: 'www-roots/'
-				}
+					hostname: "*",
+          			keepalive: true
+      			}
 			}
 		}
 
@@ -82,14 +83,16 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');		// JS validation
 	grunt.loadNpmTasks('grunt-contrib-sass');		// Compile SASS
 	grunt.loadNpmTasks('grunt-contrib-connect');	// Run local server
-
+	
+	grunt.registerTask('server', 'connect:dev');
 	grunt.registerTask('default',
 		[
-		'connect',
+		
 		'jshint',									// Check JS
-		'sass:dev' 									// Compile Sass to *****
+		'sass:dev'									// Compile Sass to *****
 		//'uglify:dev',								// Minify JS to *****
 		//'svgmin:dev',								// Optimize SVG in *****
+		//'connect:dev'
 		
 		]
 		);
