@@ -1,4 +1,4 @@
-squareone
-===========
+squareone-grunt
+===============
 
-HTML base template
+HTML Boilerplate + Grunt

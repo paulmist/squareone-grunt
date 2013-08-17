@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
 			css: {
-				files: 'assets/scss/**/*.scss',
+				files: 'dev/assets/scss/**/*.scss',
 				tasks: ['sass:dev'],
 				options: {
 					interrupt: true
@@ -11,16 +11,19 @@ module.exports = function(grunt) {
 			},
 			
 			js: {
-				files: 'assets/js/**/*.js',
+				files: 'dev/assets/js/**/*.js',
 				tasks: ['uglify:dev'],
 				options: {
 					interrupt: true
 				}
-			},
+			}
+			/*
+			,
 
 			liquid: {
 				files: ''
 			}
+			*/
 		},
 
 		jekyll: {
@@ -33,7 +36,7 @@ module.exports = function(grunt) {
 		},
 		
 		jshint: {
-			files: ['assets/js/*.js']
+			files: ['dev/assets/js/*.js']
 		},
 		
 		sass: {
@@ -43,9 +46,9 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'assets/scss/',
+					cwd: 'dev/assets/scss/',
 					src: ['*.scss'],
-					dest: 'assets/css/',
+					dest: 'build/assets/css/',
 					ext: '.css'
 				}]
 			}
@@ -53,8 +56,22 @@ module.exports = function(grunt) {
 
 		uglify: {
 			dev: {
-
+				options: {
+					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+					        '<%= grunt.template.today("yyyy-mm-dd") %> */',
+					preserveComments: 'some'
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'dev/assets/js',
+						src: ['*.js'],
+						dest: 'build/assets/js',
+						ext: '.min.js'
+					}
+				]
 			}
+
 		},
 
 		svgmin: {
@@ -85,15 +102,15 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');	// Run local server
 	
 	grunt.registerTask('server', 'connect:dev');
-	grunt.registerTask('default',
+	grunt.registerTask(	'default',
 		[
-		
 		'jshint',									// Check JS
-		'sass:dev'									// Compile Sass to *****
+		'sass:dev',									// Compile Sass to *****
 		//'uglify:dev',								// Minify JS to *****
 		//'svgmin:dev',								// Optimize SVG in *****
 		//'connect:dev'
-		
+		//'connect:dev',
+		'watch'
 		]
-		);
+	);
 }
