@@ -5,15 +5,15 @@ squareone-grunt
 
 ### Server:
 
-1. Start server [grunt-contrib-connect]
-2. Keep alive   [grunt-contrib-connect]
-3. Watch for changes [grunt-contrib-watch]
-4. Livereload [grunt-contrib-watch]
+1. Start server [grunt-contrib-connect] ✔
+2. Keep alive   [grunt-contrib-connect] ✔
+3. Watch for changes [grunt-contrib-watch] ✔
+4. Livereload [grunt-contrib-watch] ✔
 
 ### Development:
 
-1. Compile Sass (fast) [grunt-sass, grunt-contrib-sass]
-2. JSHint [grunt-contrib-jshint]
+1. Compile Sass (fast) [grunt-sass, grunt-contrib-sass] ✔
+2. JSHint [grunt-contrib-jshint] ✔
 3. Notifications [grunt-notify]
 4. Liquid templating [grunt-jekyll]
 
