@@ -1,3 +1,3 @@
 (function ($, undefined) {
-  alert("Test");
+  alert("Test New");
 }(jQuery));

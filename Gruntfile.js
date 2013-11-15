@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
 			css: {
-				files: 'dev/assets/scss/**/*.scss',
+				files: ['dev/assets/scss/**/*.scss'],
 				tasks: ['sass:dev'],
 				options: {
 					interrupt: true
@@ -12,10 +12,16 @@ module.exports = function(grunt) {
 			
 			js: {
 				files: 'dev/assets/js/**/*.js',
-				tasks: ['uglify:dev'],
+				tasks: ['jshint:dev'],
 				options: {
 					interrupt: true
 				}
+			},
+			livereload: {
+				options: {
+					livereload: true
+				},
+				files: ['dev/assets/css/*.css']
 			}
 			/*
 			,
@@ -36,7 +42,11 @@ module.exports = function(grunt) {
 		},
 		
 		jshint: {
-			files: ['dev/assets/js/*.js']
+			dev:{
+				files: {
+					src: ['dev/assets/js/*.js']
+				}
+			}
 		},
 		
 		sass: {
@@ -47,8 +57,8 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'dev/assets/scss/',
-					src: ['*.scss'],
-					dest: 'build/assets/css/',
+					src: ['*.scss', '!_*.scss'],
+					dest: 'dev/assets/css/',
 					ext: '.css'
 				}]
 			}
@@ -66,7 +76,7 @@ module.exports = function(grunt) {
 						expand: true,
 						cwd: 'dev/assets/js',
 						src: ['*.js'],
-						dest: 'build/assets/js',
+						dest: 'dev/assets/js',
 						ext: '.min.js'
 					}
 				]
@@ -83,7 +93,8 @@ module.exports = function(grunt) {
 		connect: {
 			dev: {
 				options:{
-					port: 8000,
+					port: 8888,
+					base: "dev",
 					hostname: "*",
           			keepalive: true
       			}
@@ -104,8 +115,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('server', 'connect:dev');
 	grunt.registerTask(	'default',
 		[
-		'jshint',									// Check JS
-		'sass:dev',									// Compile Sass to *****
+		//'jshint',									// Check JS
+		//'sass:dev',								// Compile Sass to *****
 		//'uglify:dev',								// Minify JS to *****
 		//'svgmin:dev',								// Optimize SVG in *****
 		//'connect:dev'
