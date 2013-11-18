@@ -21,10 +21,11 @@ squareone-grunt
 
 1. Compile Sass [grunt-contrib-sass]
 2. JS Minify [grunt-contrib-uglify]
-3. CSS Minify [grunt-contrib-cssmin]
-4. Notifications [grunt-notify]
-5. Liquid templating [grunt-jekyll]
-6. Image optimsation [grunt-contrib-imagemin]
-7. SVG Optimasation [grunt-svgmin]
-8. Copy files [grunt-contrib-copy]
+3. CSS - Unused selector removal [https://github.com/addyosmani/grunt-uncss]
+4. CSS Minify [grunt-contrib-cssmin]
+5. Notifications [grunt-notify]
+6. Liquid templating [grunt-jekyll]
+7. Image optimsation [grunt-contrib-imagemin]
+8. SVG Optimasation [grunt-svgmin]
+9. Copy files [grunt-contrib-copy]
 
